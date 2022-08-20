@@ -30,7 +30,10 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection == 'paper' && computerSelection == 'rock')
         ){
         return `You win, ${playerSelection} beats ${computerSelection}!`;
-    } else {
+        } else if (playerSelection == computerSelection) {
+           console.log('Tie!')
+           return playRound(getPlayerSelection(), getComputerChoice(choices));
+        } else {
         return `You Lose, ${playerSelection} is destroyed by ${computerSelection}!`
     }
 }
