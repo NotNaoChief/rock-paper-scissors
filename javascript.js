@@ -18,9 +18,8 @@ function getPlayerSelection() {
     return validatedPlayerSelection;   
 }
 
-let playerSelection = getPlayerSelection();
-
 // computerSelection = getComputerChoice()
+
 
 // playerScore starts at 0
 
