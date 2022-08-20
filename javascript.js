@@ -1,6 +1,7 @@
 // Rock Paper Scissors
 
 // choices - rock, paper, scissors
+const choices = ["rock", "paper", "scissors"];
 
 // getComputerChoice() - return random choice between choices 
 
