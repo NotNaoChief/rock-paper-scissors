@@ -12,6 +12,13 @@ function getComputerChoice(choices) {
 
 // playerSelection() - prompt player for their choice
 // convert toLowerCase() for validation
+function getPlayerSelection() {
+    const playerSelection = prompt(`Make your choice between rock, paper, or scissors.`);  
+    const validatedPlayerSelection = playerSelection.toLocaleLowerCase();
+    return validatedPlayerSelection;   
+}
+
+let playerSelection = getPlayerSelection();
 
 // computerSelection = getComputerChoice()
 
