@@ -20,14 +20,28 @@ function getPlayerSelection() {
 
 // computerSelection = getComputerChoice()
 
-
-// playerScore starts at 0
-
-// computerScore starts at 0
-
 // playRound() - compare computerSelection with playerSelection to determine
-//  winner, if draw go again. Increment winners score by 1. Announce win or 
+//  winner, if draw go again. Announce win or 
 //  lose round.
+function playRound(playerSelection, computerSelection) {
+    if (
+        (playerSelection == 'rock' && computerSelection == 'scissors') ||
+        (playerSelection == 'scissors' && computerSelection == 'paper') || 
+        (playerSelection == 'paper' && computerSelection == 'rock')
+        ){
+        return `You win, ${playerSelection} beats ${computerSelection}!`;
+    } else if (playerSelection == computerSelection) {
+        return "Tie!"
+    } else {
+        return `You Lose, ${playerSelection} is destroyed by ${computerSelection}!`
+    }
+}
+
 
 // game() - play 5 rounds, highest score at end is winner, announce winner.
 
+    // playerScore starts at 0
+    let playerScore = 0;
+
+    // computerScore starts at 0
+    let computerScore = 0;
