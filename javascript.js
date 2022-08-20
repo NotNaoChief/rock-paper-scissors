@@ -3,7 +3,12 @@
 // choices - rock, paper, scissors
 const choices = ["rock", "paper", "scissors"];
 
-// getComputerChoice() - return random choice between choices 
+// getComputerChoice() - return random choice between choices
+function getComputerChoice(choices) {
+    const randomInt = Math.floor(Math.random() * choices.length);
+    const randomChoice = choices[randomInt];
+    return randomChoice;
+} 
 
 // playerSelection() - prompt player for their choice
 // convert toLowerCase() for validation
