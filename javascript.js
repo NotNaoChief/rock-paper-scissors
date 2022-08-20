@@ -30,8 +30,6 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection == 'paper' && computerSelection == 'rock')
         ){
         return `You win, ${playerSelection} beats ${computerSelection}!`;
-    } else if (playerSelection == computerSelection) {
-        return "Tie!"
     } else {
         return `You Lose, ${playerSelection} is destroyed by ${computerSelection}!`
     }
@@ -39,9 +37,25 @@ function playRound(playerSelection, computerSelection) {
 
 
 // game() - play 5 rounds, highest score at end is winner, announce winner.
-
+function game() {
     // playerScore starts at 0
     let playerScore = 0;
 
     // computerScore starts at 0
     let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        let winner = playRound(getPlayerSelection(), getComputerChoice(choices));
+        console.log(winner);
+        if (winner[4] === 'w') {
+            playerScore += 1;
+        } else {
+            computerScore += 1;
+        }
+    }
+    if (playerScore > computerScore) {
+        alert('Player Wins!');
+    } else {
+        alert("Player Loses!");
+    }
+}
