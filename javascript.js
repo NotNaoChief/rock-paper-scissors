@@ -28,7 +28,7 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection == 'rock' && computerSelection == 'scissors') ||
         (playerSelection == 'scissors' && computerSelection == 'paper') || 
         (playerSelection == 'paper' && computerSelection == 'rock')
-        ){
+        ) {
         return `You win, ${playerSelection} beats ${computerSelection}!`;
         } else if (playerSelection == computerSelection) {
            console.log('Tie!')
