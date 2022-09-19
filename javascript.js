@@ -40,7 +40,7 @@ function playRound(playerSelection, computerSelection) {
 
 
 // game() - play 5 rounds, highest score at end is winner, announce winner.
-function game() {
+`function game() {
     // playerScore starts at 0
     let playerScore = 0;
 
@@ -61,4 +61,4 @@ function game() {
     } else {
         alert("Player Loses!");
     }
-}
+}`
