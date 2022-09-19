@@ -10,19 +10,6 @@ function getComputerChoice(choices) {
     return randomChoice;
 } 
 
-// playerSelection() - prompt player for their choice
-// convert toLowerCase() for validation
-function getPlayerSelection() {
-    const playerSelection = prompt(`Make your choice between rock, paper, or scissors.`);  
-    const validatedPlayerSelection = playerSelection.toLocaleLowerCase();
-    return validatedPlayerSelection;   
-}
-
-// computerSelection = getComputerChoice()
-
-// playRound() - compare computerSelection with playerSelection to determine
-//  winner, if draw go again. Announce win or 
-//  lose round.
 function playRound(playerSelection, computerSelection) {
     if (
         (playerSelection == 'rock' && computerSelection == 'scissors') ||
@@ -30,14 +17,19 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection == 'paper' && computerSelection == 'rock')
         ) {
         return `You win, ${playerSelection} beats ${computerSelection}!`;
-        } else if (playerSelection == computerSelection) {
-           console.log('Tie!')
-           return playRound(getPlayerSelection(), getComputerChoice(choices));
         } else {
         return `You Lose, ${playerSelection} is destroyed by ${computerSelection}!`
     }
 }
 
+// add event listener on the buttons calling playRound with the correct
+// player selection
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        console.log(playRound(button.id, getComputerChoice(choices)))
+    })
+});
 
 // game() - play 5 rounds, highest score at end is winner, announce winner.
 `function game() {
