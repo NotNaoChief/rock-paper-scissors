@@ -24,12 +24,23 @@ function playRound(playerSelection, computerSelection) {
 
 // add event listener on the buttons calling playRound with the correct
 // player selection
+let result;
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        console.log(playRound(button.id, getComputerChoice(choices)))
+        
+        // get result of the round 
+        result = playRound(button.id, getComputerChoice(choices))
+        
+        // display results of the round in the results div
+        const results = document.querySelector('#results');
+        results.textContent = result;
     })
 });
+
+
+
+
 
 // game() - play 5 rounds, highest score at end is winner, announce winner.
 `function game() {
