@@ -3,6 +3,9 @@
 // choices - rock, paper, scissors
 const choices = ["rock", "paper", "scissors"];
 
+let computerScore = 0;
+let playerScore = 0;
+
 function getRandomInt() {
     const randomInt = Math.floor(Math.random() * choices.length);
     return randomInt
@@ -13,17 +16,38 @@ function getComputerChoice(choices) {
     const randomInt = getRandomInt();
     const computerChoice = choices[randomInt];
     return computerChoice;
-} 
+}
 
-function roundScore(playerSelection, computerSelection) {
+const playerScoreSection = document.querySelector('.playerScoreSection');
+
+const computerScoreSection = document.querySelector('.computerScoreSection');
+
+function updatePlayerScore() {
+    playerScore++;
+    playerScoreSection.textContent = `Player: ${playerScore}`;
+}
+
+function updateComputerScore() {
+    computerScore++;
+    computerScoreSection.textContent = `Computer: ${computerScore}`;
+}
+
+function initializeScores() {
+    playerScoreSection.textContent = "Player: 0";
+    computerScoreSection.textContent = "Computer: 0";
+}
+
+function playRound(playerSelection, computerSelection) {
     if (
         (playerSelection == 'rock' && computerSelection == 'scissors') ||
         (playerSelection == 'scissors' && computerSelection == 'paper') || 
         (playerSelection == 'paper' && computerSelection == 'rock')
         ) {
+        updatePlayerScore();   
         return `You win, ${playerSelection} beats ${computerSelection}!`;
-        } else {
-        return `You Lose, ${playerSelection} is destroyed by ${computerSelection}!`
+    } else {
+        updateComputerScore();
+        return `You Lose, ${playerSelection} beats ${computerSelection}!`
     }
 }
 
@@ -35,13 +59,16 @@ buttons.forEach((button) => {
     button.addEventListener('click', () => {
         
         // get result of the round 
-        result = roundScore(button.id, getComputerChoice(choices))
+        result = playRound(button.id, getComputerChoice(choices))
         
         // display results of the round in the results div
         const results = document.querySelector('#results');
         results.textContent = result;
     })
 });
+
+initializeScores();
+
 
 
 // game() - play 5 rounds, highest score at end is winner, announce winner.
