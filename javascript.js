@@ -64,6 +64,16 @@ buttons.forEach((button) => {
         // display results of the round in the results div
         const results = document.querySelector('#results');
         results.textContent = result;
+
+        // check for winner
+        if (computerScore === 5 || playerScore === 5) {
+            if (playerScore > computerScore) {
+                results.textContent = "Player Wins! Game over!";
+            } else {
+                results.textContent = "Computer Wins! Game Over!"
+            }
+        }
+
     })
 });
 
