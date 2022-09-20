@@ -3,14 +3,19 @@
 // choices - rock, paper, scissors
 const choices = ["rock", "paper", "scissors"];
 
+function getRandomInt() {
+    const randomInt = Math.floor(Math.random() * choices.length);
+    return randomInt
+}
+
 // getComputerChoice() - return random choice between choices
 function getComputerChoice(choices) {
-    const randomInt = Math.floor(Math.random() * choices.length);
-    const randomChoice = choices[randomInt];
-    return randomChoice;
+    const randomInt = getRandomInt();
+    const computerChoice = choices[randomInt];
+    return computerChoice;
 } 
 
-function playRound(playerSelection, computerSelection) {
+function roundScore(playerSelection, computerSelection) {
     if (
         (playerSelection == 'rock' && computerSelection == 'scissors') ||
         (playerSelection == 'scissors' && computerSelection == 'paper') || 
@@ -30,16 +35,13 @@ buttons.forEach((button) => {
     button.addEventListener('click', () => {
         
         // get result of the round 
-        result = playRound(button.id, getComputerChoice(choices))
+        result = roundScore(button.id, getComputerChoice(choices))
         
         // display results of the round in the results div
         const results = document.querySelector('#results');
         results.textContent = result;
     })
 });
-
-
-
 
 
 // game() - play 5 rounds, highest score at end is winner, announce winner.
