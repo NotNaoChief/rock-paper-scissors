@@ -21,7 +21,7 @@ Buttons:
 Rounds:
     • function – round – takes playersWeapon
         ◦ variabe – roundResult – starts as empty string ‘’
-        ◦ function – getComputersWeapon - takes ‘weapons’ Array
+        
         
             ▪ 
         ◦ function – getRoundResult – takes playersWeapon and computersWeapon
@@ -52,3 +52,12 @@ function getRandomIndex(weapons) {
     const randomIndex = Math.floor(Math.random() * weapons.length);
     return randomIndex;
 }
+
+// function – getComputersWeapon - takes ‘weapons’ Array
+function getComputersWeapon(weapons) {
+    const randomIndex = getRandomIndex(weapons);
+    const computersWeapon = weapons[randomIndex];
+    return computersWeapon;
+}
+
+console.log(getComputersWeapon(['rock','paper', 'sciccors']));
