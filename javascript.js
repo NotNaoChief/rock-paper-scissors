@@ -22,9 +22,8 @@ Rounds:
     • function – round – takes playersWeapon
         ◦ variabe – roundResult – starts as empty string ‘’
         ◦ function – getComputersWeapon - takes ‘weapons’ Array
-            ▪ function – getRandomInt
-                • returns a random number between 0 and 2
-            ▪ uses the randomInt as an index in the ‘weapons’ array to be assinged as the computersWeapon
+        
+            ▪ 
         ◦ function – getRoundResult – takes playersWeapon and computersWeapon
             ▪ compares weapons
             ▪ returns the winner as a string ‘player’, ‘computer’, or ‘tied’ – to be assinged to roundResult
@@ -46,3 +45,10 @@ Rounds:
     • Function – playGame – Encapsulates all above
 
 */
+
+// Get a random number between 0 and 2 to use as an index in the
+// ‘weapons’ array to be assinged as the computersWeapon
+function getRandomIndex(weapons) {
+    const randomIndex = Math.floor(Math.random() * weapons.length);
+    return randomIndex;
+}
