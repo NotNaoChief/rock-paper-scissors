@@ -35,18 +35,19 @@ Rounds:
 
 */
 
-// Starting variables
+// starting variables
 let playersScore = 0;
 let computersScore = 0;
 let playersWeapon = '';
 let computersWeapon = '';
 const weapons = ['rock', 'paper', 'scissors'];
 
-// Sections in html setup for displaying scores
+// sections in html setup for displaying scores
 const playersScoreSection = document.querySelector('#players-score');
 const computersScoreSection = document.querySelector('#computers-score');
 
 
+// displaying scores
 function displayPlayerScore(playersScore) {
     playersScoreSection.textContent = `Player: ${playersScore}`;
 }
@@ -57,9 +58,7 @@ function displayComputerScore(computersScore) {
 }
 
 
-
-
-// Get a random number between 0 and 2 to use as an index in the
+// get a random number between 0 and 2 to use as an index in the
 // ‘weapons’ array to be assinged as the computersWeapon
 function getRandomIndex(weapons) {
     const randomIndex = Math.floor(Math.random() * weapons.length);
@@ -96,18 +95,7 @@ function getRoundResult(playersWeapon, computersWeapon) {
 }
 
 
-// • function – increaseScore – takes either ‘player’ or ‘computer’
-//                     ◦ updates the corresponding score
-function increaseScore(roundResult) {
-    if (roundResult === 'player') {
-        playersScore++;
-    } else if (roundResult === 'computer'){
-        computersScore++;
-    } else {
-        return;
-    }
-}
+// code for testing while building
 
-
-//                 • function – displayNewScore – takes either ‘player’ or ‘computer’
-//                     ◦ displays the corresponding new score
+displayPlayerScore(playersScore);
+displayComputerScore(computersScore);
