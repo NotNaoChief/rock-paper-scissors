@@ -23,10 +23,6 @@ Rounds:
         ◦ variabe – roundResult – starts as empty string ‘’
         
         
-            ▪ 
-        ◦ function – getRoundResult – takes playersWeapon and computersWeapon
-            ▪ compares weapons
-            ▪ returns the winner as a string ‘player’, ‘computer’, or ‘tied’ – to be assinged to roundResult
         ◦ function – processResult - takes roundResult
             ▪ if the roundResult is ‘tied’ – declare a tie, end the ‘round’
             ▪ if the result is ‘player’ or ‘computer’, update their score
@@ -53,11 +49,29 @@ function getRandomIndex(weapons) {
     return randomIndex;
 }
 
-// function – getComputersWeapon - takes ‘weapons’ Array
 function getComputersWeapon(weapons) {
     const randomIndex = getRandomIndex(weapons);
     const computersWeapon = weapons[randomIndex];
     return computersWeapon;
 }
 
-console.log(getComputersWeapon(['rock','paper', 'sciccors']));
+// compares weapons and returns the winner as a string ‘player’,
+// ‘computer’, or ‘tied’ – to be assinged to roundResult
+function getRoundResult(playersWeapon, computersWeapon) {
+
+    let roundResult;
+
+    if (playersWeapon === computersWeapon){
+        roundResult = 'tie';
+    } else if (
+        (playersWeapon == 'rock' && computersWeapon == 'scissors') ||
+        (playersWeapon == 'scissors' && computersWeapon == 'paper') || 
+        (playersWeapon == 'paper' && computersWeapon == 'rock')
+    ){
+        roundResult = 'player';
+    } else {
+        roundResult = 'computer';
+    }
+
+    return roundResult;
+}
