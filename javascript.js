@@ -35,14 +35,9 @@ Rounds:
 
 */
 
-// Starting Variables:
-	// playersScore – Number – starts at 0
-	// computersScore – Number – starts at 0
-	// weapons – Array of String’s – ‘rock’, ‘paper’, ‘scissors’
-	// playersWeapon – String – starts as an empty string ‘’
-	// computersWeapon – String – starts as an empty string ‘’
 let playersScore = 0;
 let computersScore = 0;
+
 const weapons = ['rock', 'paper', 'scissors'];
 let playersWeapon = '';
 let computersWeapon = '';
