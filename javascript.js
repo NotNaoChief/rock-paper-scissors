@@ -17,11 +17,9 @@ Rounds:
         
         ◦ function – processResult - takes roundResult
             ▪ if the roundResult is ‘tied’ – declare a tie, end the ‘round’
-            ▪ if the result is ‘player’ or ‘computer’, update their score
-                • function – updateScore – takes either ‘player’ or ‘computer’
-                    ◦ updates the corresponding score
-                • function – displayNewScore – takes either ‘player’ or ‘computer’
-                    ◦ displays the corresponding new score
+            ▪ if the result is ‘player’ or ‘computer’, update/display
+                new score
+                
                 
         ◦ function – checkForWinner – takes playersScore and computersScore
             ▪ if playersScore or computersScore >= 5
@@ -57,11 +55,13 @@ function getRandomIndex(weapons) {
     return randomIndex;
 }
 
+
 function getComputersWeapon(weapons) {
     const randomIndex = getRandomIndex(weapons);
     const computersWeapon = weapons[randomIndex];
     return computersWeapon;
 }
+
 
 // compares weapons and returns the winner as a string ‘player’,
 // ‘computer’, or ‘tied’ – to be assinged to roundResult
@@ -83,3 +83,20 @@ function getRoundResult(playersWeapon, computersWeapon) {
 
     return roundResult;
 }
+
+
+// • function – increaseScore – takes either ‘player’ or ‘computer’
+//                     ◦ updates the corresponding score
+function increaseScore(roundResult) {
+    if (roundResult === 'player') {
+        playersScore++;
+    } else if (roundResult === 'computer'){
+        computersScore++;
+    } else {
+        return;
+    }
+}
+
+
+//                 • function – displayNewScore – takes either ‘player’ or ‘computer’
+//                     ◦ displays the corresponding new score
