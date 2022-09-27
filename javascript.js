@@ -22,12 +22,14 @@ Rounds:
     • function – round – takes playersWeapon
         ◦ variabe – roundResult – starts as empty string ‘’
         
-        
         ◦ function – processResult - takes roundResult
             ▪ if the roundResult is ‘tied’ – declare a tie, end the ‘round’
             ▪ if the result is ‘player’ or ‘computer’, update their score
                 • function – updateScore – takes either ‘player’ or ‘computer’
                     ◦ updates the corresponding score
+                • function – displayNewScore – takes either ‘player’ or ‘computer’
+                    ◦ displays the corresponding new score
+                
         ◦ function – checkForWinner – takes playersScore and computersScore
             ▪ if playersScore or computersScore >= 5
                 • function – removeListeners
