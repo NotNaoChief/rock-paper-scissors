@@ -35,12 +35,28 @@ Rounds:
 
 */
 
+// Starting variables
 let playersScore = 0;
 let computersScore = 0;
-
-const weapons = ['rock', 'paper', 'scissors'];
 let playersWeapon = '';
 let computersWeapon = '';
+const weapons = ['rock', 'paper', 'scissors'];
+
+// Sections in html setup for displaying scores
+const playersScoreSection = document.querySelector('#players-score');
+const computersScoreSection = document.querySelector('#computers-score');
+
+
+function displayPlayerScore(playersScore) {
+    playersScoreSection.textContent = `Player: ${playersScore}`;
+}
+
+
+function displayComputerScore(computersScore) {
+    computersScoreSection.textContent = `Computer: ${computersScore}`;
+}
+
+
 
 
 // Get a random number between 0 and 2 to use as an index in the
