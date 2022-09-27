@@ -1,13 +1,6 @@
 // rock, paper, scissors
 
 /* 
-Starting Variables:
-	playersScore – Number – starts at 0
-	computersScore – Number – starts at 0
-	weapons – Array of String’s – ‘rock’, ‘paper’, ‘scissors’
-	playersWeapon – String – starts as an empty string ‘’
-	computersWeapon – String – starts as an empty string ‘’
-
 Screen Initialy Displays:
     • “Choose your weapon”
     • Three ‘buttons’, one corresponding to each weapon in ‘weapons’
@@ -43,6 +36,19 @@ Rounds:
     • Function – playGame – Encapsulates all above
 
 */
+
+// Starting Variables:
+	// playersScore – Number – starts at 0
+	// computersScore – Number – starts at 0
+	// weapons – Array of String’s – ‘rock’, ‘paper’, ‘scissors’
+	// playersWeapon – String – starts as an empty string ‘’
+	// computersWeapon – String – starts as an empty string ‘’
+let playersScore = 0;
+let computersScore = 0;
+const weapons = ['rock', 'paper', 'scissors'];
+let playersWeapon = '';
+let computersWeapon = '';
+
 
 // Get a random number between 0 and 2 to use as an index in the
 // ‘weapons’ array to be assinged as the computersWeapon
