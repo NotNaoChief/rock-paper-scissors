@@ -60,14 +60,14 @@ function displayComputerScore(computersScore) {
 
 // get a random number between 0 and 2 to use as an index in the
 // ‘weapons’ array to be assinged as the computersWeapon
-function getRandomIndex(weapons) {
+function getRandomIndex() {
     const randomIndex = Math.floor(Math.random() * weapons.length);
     return randomIndex;
 }
 
 
-function getComputersWeapon(weapons) {
-    const randomIndex = getRandomIndex(weapons);
+function getComputersWeapon() {
+    const randomIndex = getRandomIndex();
     const computersWeapon = weapons[randomIndex];
     return computersWeapon;
 }
@@ -95,7 +95,19 @@ function getRoundResult(playersWeapon, computersWeapon) {
 }
 
 
-// code for testing while building
+// increasing scores
+function increasePlayersScore() {
+    playersScore++;
+}
 
+
+function increaseComputersScore() {
+    computersScore++;
+}
+
+
+// code for testing while building
 displayPlayerScore(playersScore);
 displayComputerScore(computersScore);
+
+const roundResult = getRoundResult('rock', getComputersWeapon());
