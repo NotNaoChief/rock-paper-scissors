@@ -13,14 +13,10 @@ Buttons:
 
 Rounds:
     • function – round – takes playersWeapon
-        ◦ variabe – roundResult – starts as empty string ‘’
-        
-        ◦ function – processResult - takes roundResult
-            ▪ if the roundResult is ‘tied’ – declare a tie, end the ‘round’
-            ▪ if the result is ‘player’ or ‘computer’, update/display
-                new score
-                
-                
+        // function – processResult
+            // if the roundResult is ‘tied’ – declare a tie, end the ‘round’
+            // if the result is ‘player’ or ‘computer’, update/display
+            // new score
         ◦ function – checkForWinner – takes playersScore and computersScore
             ▪ if playersScore or computersScore >= 5
                 • function – removeListeners
@@ -32,7 +28,6 @@ Rounds:
                         ▪ button – event on click - 
                             • playGame
     • Function – playGame – Encapsulates all above
-
 */
 
 // starting variables
@@ -86,12 +81,31 @@ function getRoundResult(playersWeapon, computersWeapon) {
         (playersWeapon == 'scissors' && computersWeapon == 'paper') || 
         (playersWeapon == 'paper' && computersWeapon == 'rock')
     ){
-        roundResult = 'player';
+        roundResult = 'Player';
     } else {
-        roundResult = 'computer';
+        roundResult = 'Computer';
+    }
+    
+    return roundResult;
+}
+
+
+// section in html for displaying round results
+const roundResultsSection = document.querySelector('#round-results');
+
+
+// displaying round results
+function displayRoundResults(roundResult) {
+    let message = `Player chose ${playersWeapon},
+        Computer chose ${computersWeapon}. `;
+    
+    if (roundResult === 'tie') {
+        message += "Tied! Go again!"
+    } else {
+        message += `${roundResult} wins this round!`
     }
 
-    return roundResult;
+    roundResultsSection.textContent = message;
 }
 
 
@@ -110,4 +124,9 @@ function increaseComputersScore() {
 displayPlayerScore(playersScore);
 displayComputerScore(computersScore);
 
-const roundResult = getRoundResult('rock', getComputersWeapon());
+playersWeapon = 'rock';
+computersWeapon = getComputersWeapon();
+
+const roundResult = getRoundResult(playersWeapon, computersWeapon);
+
+displayRoundResults(roundResult);
