@@ -13,10 +13,7 @@ Buttons:
 
 Rounds:
     • function – round – takes playersWeapon
-        // function – processResult
-            // if the roundResult is ‘tied’ – declare a tie, end the ‘round’
-            // if the result is ‘player’ or ‘computer’, update/display
-            // new score
+
         ◦ function – checkForWinner – takes playersScore and computersScore
             ▪ if playersScore or computersScore >= 5
                 • function – removeListeners
@@ -43,12 +40,12 @@ const computersScoreSection = document.querySelector('#computers-score');
 
 
 // displaying scores
-function displayPlayerScore(playersScore) {
+function displayPlayerScore() {
     playersScoreSection.textContent = `Player: ${playersScore}`;
 }
 
 
-function displayComputerScore(computersScore) {
+function displayComputerScore() {
     computersScoreSection.textContent = `Computer: ${computersScore}`;
 }
 
@@ -95,15 +92,9 @@ const roundResultsSection = document.querySelector('#round-results');
 
 
 // displaying round results
-function displayRoundResults(roundResult) {
+function displayRoundResults(roundMessage) {
     let message = `Player chose ${playersWeapon},
-        Computer chose ${computersWeapon}. `;
-    
-    if (roundResult === 'tie') {
-        message += "Tied! Go again!"
-    } else {
-        message += `${roundResult} wins this round!`
-    }
+        Computer chose ${computersWeapon}. ${roundMessage}`;
 
     roundResultsSection.textContent = message;
 }
@@ -120,6 +111,28 @@ function increaseComputersScore() {
 }
 
 
+// if the roundResult is ‘tied’ – declare a tie, end the ‘round’
+// if the result is ‘player’ or ‘computer’, update/display
+// new score
+function processResult(roundResult) { 
+    let roundMessage;
+    if (roundResult === 'tie') {
+        roundMessage = "Tie round!";
+    } else if (roundResult === 'Player'){
+        roundMessage = `Player wins this round!`;
+        increasePlayersScore();
+        displayPlayerScore();
+    } else {
+        roundMessage = 'Computer wins this round!';
+        increaseComputersScore();
+        displayComputerScore();
+    }
+    
+    displayRoundResults(roundMessage);
+}
+
+
+
 // code for testing while building
 displayPlayerScore(playersScore);
 displayComputerScore(computersScore);
@@ -129,4 +142,5 @@ computersWeapon = getComputersWeapon();
 
 const roundResult = getRoundResult(playersWeapon, computersWeapon);
 
-displayRoundResults(roundResult);
+processResult(roundResult);
+
