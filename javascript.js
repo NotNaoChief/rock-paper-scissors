@@ -132,15 +132,35 @@ function processResult(roundResult) {
 }
 
 
+// grab all buttons for adding/removing listeners
+const weaponsButtons = document.querySelectorAll('.weapons button');
+
+
+// clicking a button triggers a round with the players weapon set to
+// the weapon associated with the button
+function addWeaponsListener() {
+    weaponsButtons.forEach(
+        weapon => {
+            weapon.addEventListener('click', () => {
+                playersWeapon = weapon.id;
+                round();
+            })
+        }
+    );
+}
+
+
+function round() {
+    
+    computersWeapon = getComputersWeapon();
+    
+    const roundResult = getRoundResult(playersWeapon, computersWeapon);
+    processResult(roundResult);
+}
+
 
 // code for testing while building
 displayPlayerScore(playersScore);
 displayComputerScore(computersScore);
 
-playersWeapon = 'rock';
-computersWeapon = getComputersWeapon();
-
-const roundResult = getRoundResult(playersWeapon, computersWeapon);
-
-processResult(roundResult);
-
+addWeaponsListener();
