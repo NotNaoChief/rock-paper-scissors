@@ -24,7 +24,8 @@ Rounds:
                     ◦ add button to play again
                         ▪ button – event on click - 
                             • playGame
-    • Function – playGame – Encapsulates all above
+Play Game:
+    Function – playGame – Encapsulates all above
 */
 
 // starting variables
@@ -150,12 +151,42 @@ function addWeaponsListener() {
 }
 
 
+function isWinner() {
+    if (playersScore === 5 || computersScore === 5) {
+        return true
+    } else {
+        return false
+    }
+}
+
+
+function announceWinner(winner) {
+    const winnerSection = document.querySelector('#winner');
+    const winnerP = document.createElement('p');
+
+    winnerSection.textContent = `${winner} wins!`
+}
+
+
 function round() {
     
     computersWeapon = getComputersWeapon();
     
     const roundResult = getRoundResult(playersWeapon, computersWeapon);
     processResult(roundResult);
+
+    // check for winner
+    if (isWinner() === true) {
+        if (playersScore === 5) {
+            announceWinner('Player');
+        } else {
+            announceWinner('Computer');
+        }
+    }
+
+    // if winner - annouce it, remove event listeners from buttons, ask to play again
+
+
 }
 
 
