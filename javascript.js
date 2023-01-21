@@ -29,8 +29,8 @@ Play Game:
 */
 
 // starting variables
-let playersScore = 0;
-let computersScore = 0;
+let playersScore;
+let computersScore;
 let playersWeapon = '';
 let computersWeapon = '';
 const weapons = ['rock', 'paper', 'scissors'];
@@ -162,10 +162,10 @@ function isWinner() {
 
 function announceWinner(winner) {
     const winnerSection = document.querySelector('#winner');
-    const winnerP = document.createElement('p');
 
     winnerSection.textContent = `${winner} wins!`
 }
+
 
 
 function round() {
@@ -177,21 +177,63 @@ function round() {
 
     // check for winner
     if (isWinner() === true) {
+        
+        // announcing winner
         if (playersScore === 5) {
             announceWinner('Player');
         } else {
             announceWinner('Computer');
         }
+
+        // stop the buttons from triggering a round
+        // MAKE INTO FUNCTION
+        weaponsButtons.forEach(
+            weapon => {
+                weapon.style.display = 'none';
+            }
+        )
+        
+        // Clear beginning messages
+        document.querySelector('p+p').style.display = 'none';
+        document.querySelector('p+p+p').style.display = 'none';
+
+
+        // ask to play again
+        let playAgain = document.createElement("button");
+        playAgain.textContent = "Play Again?";
+        document.body.appendChild(playAgain);
+
+        // Event listener for play again button
+        playAgain.addEventListener("click", () => {
+            
+            // Display messages and weapons
+            weaponsButtons.forEach(
+                weapon => {
+                    weapon.style.display = 'inline';
+                }
+                )
+                
+                // Display beginning messages
+                document.querySelector('p+p').style.display = 'block';
+                document.querySelector('p+p+p').style.display = 'block';
+                
+                // Clear winners message
+                document.querySelector('#winner').textContent = '';
+                
+                // Restart game
+                game();
+        })
     }
-
-    // if winner - annouce it, remove event listeners from buttons, ask to play again
-
-
 }
 
 
-// code for testing while building
-displayPlayerScore(playersScore);
-displayComputerScore(computersScore);
+function game() {
+    playersScore = 0;
+    computersScore = 0;
+    displayPlayerScore(playersScore);
+    displayComputerScore(computersScore);
+    
+}
 
 addWeaponsListener();
+game();
