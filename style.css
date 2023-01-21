@@ -1,0 +1,25 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.weapons {
+    padding: 2%;
+}
+
+.scores-section {
+    display: flex;
+    gap: 10%;
+    padding: 2%;
+}
+
+#round-results {
+    padding: 2%;
+}
+
+#winner {
+    padding: 2%;
+}

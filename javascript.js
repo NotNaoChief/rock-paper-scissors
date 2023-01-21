@@ -176,7 +176,7 @@ function addPlayAgainListener() {
             document.querySelector('#winner').textContent = '';
 
             // hide play again button
-            playAgain.style.display = 'none';
+            playAgain.style.display = 'none'
             
             // restart game
             game();
