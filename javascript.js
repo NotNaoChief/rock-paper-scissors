@@ -35,6 +35,12 @@ let playersWeapon = '';
 let computersWeapon = '';
 const weapons = ['rock', 'paper', 'scissors'];
 
+// create play again button and initialize hidden
+const playAgain = document.createElement("button");
+playAgain.textContent = "Play Again?";
+document.body.appendChild(playAgain);
+playAgain.style.display = 'none'
+
 // sections in html setup for displaying scores
 const playersScoreSection = document.querySelector('#players-score');
 const computersScoreSection = document.querySelector('#computers-score');
@@ -52,7 +58,7 @@ function displayComputerScore() {
 
 
 // get a random number between 0 and 2 to use as an index in the
-// ‘weapons’ array to be assinged as the computersWeapon
+// ‘weapons’ array to be assigned as the computersWeapon
 function getRandomIndex() {
     const randomIndex = Math.floor(Math.random() * weapons.length);
     return randomIndex;
@@ -133,7 +139,7 @@ function processResult(roundResult) {
 }
 
 
-// grab all buttons for adding/removing listeners
+// grab weapons buttons for adding/removing listeners
 const weaponsButtons = document.querySelectorAll('.weapons button');
 
 
@@ -148,6 +154,33 @@ function addWeaponsListener() {
             })
         }
     );
+}
+
+
+// event listener for play again button
+function addPlayAgainListener() {
+    playAgain.addEventListener("click", () => {
+    
+        // display messages and weapons
+        weaponsButtons.forEach(
+            weapon => {
+                weapon.style.display = 'inline';
+            }
+            )
+            
+            // display beginning messages
+            document.querySelector('p+p').style.display = 'block';
+            document.querySelector('p+p+p').style.display = 'block';
+            
+            // clear winners message
+            document.querySelector('#winner').textContent = '';
+
+            // hide play again button
+            playAgain.style.display = 'none';
+            
+            // restart game
+            game();
+    })
 }
 
 
@@ -193,36 +226,13 @@ function round() {
             }
         )
         
-        // Clear beginning messages
+        // clear beginning messages
         document.querySelector('p+p').style.display = 'none';
         document.querySelector('p+p+p').style.display = 'none';
 
-
-        // ask to play again
-        let playAgain = document.createElement("button");
-        playAgain.textContent = "Play Again?";
-        document.body.appendChild(playAgain);
-
-        // Event listener for play again button
-        playAgain.addEventListener("click", () => {
-            
-            // Display messages and weapons
-            weaponsButtons.forEach(
-                weapon => {
-                    weapon.style.display = 'inline';
-                }
-                )
-                
-                // Display beginning messages
-                document.querySelector('p+p').style.display = 'block';
-                document.querySelector('p+p+p').style.display = 'block';
-                
-                // Clear winners message
-                document.querySelector('#winner').textContent = '';
-                
-                // Restart game
-                game();
-        })
+        // show play again button
+        playAgain.style.display = 'inline';
+        
     }
 }
 
@@ -236,4 +246,5 @@ function game() {
 }
 
 addWeaponsListener();
+addPlayAgainListener();
 game();
